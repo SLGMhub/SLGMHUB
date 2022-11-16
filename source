@@ -1,0 +1,12 @@
+local doge
+doge = hookmetamethod(game, __namecall, function(...)
+    local args={...}
+    local self = args[1]
+    if typeof(self)~=Instance then
+        return doge(...)
+    end
+    if getnamecallmethod()==InvokeServer and self.IsA(self,RemoteFunction) and self.Name==INTRO then
+        return true,nil,nil
+    end
+    return doge(...)
+end)
